@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Public + API",
+            "configurations": ["Launch Public", "Launch API"],
+            "stopAll": true
+        }
+    ],
+    "configurations": [
+        {
+            "name": "Launch Public",
+            "type": "php",
+            "request": "launch",
+            "runtimeArgs": ["-S", "localhost:8000", "-t", "public/"],
+            "exclude": ["**/vendor/**"],
+            "cwd": "${workspaceFolder}",
+            "port": 9003
+        },
+        {
+            "name": "Launch API",
+            "type": "php",
+            "request": "launch",
+            "runtimeArgs": ["-S", "localhost:8002", "-t", "api/"],
+            "exclude": ["**/vendor/**"],
+            "cwd": "${workspaceFolder}",
+            "port": 9003
+        }
+    ]
+}
