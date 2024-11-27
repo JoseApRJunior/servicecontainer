@@ -1,10 +1,18 @@
 <?php
 
+use app\library\Auth;
 use core\Router;
+use DI\Container;
 
-require '../vendor/autoload.php';
+require '../public/bootstrap.php';
 
-$routes = require '../routes/web.php';
+/** @var Container $container */
 
-$router = new Router;
-$router->create($routes);
+$auth = $container->get(Auth::class);
+
+$auth->auth(
+    $container->call([Auth::class, 'auth'])
+);
+
+// $router = new Router($container);
+// $router->create(require BASE_PATH . '/routes/web.php');
