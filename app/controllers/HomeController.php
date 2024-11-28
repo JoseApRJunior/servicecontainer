@@ -2,28 +2,18 @@
 
 namespace app\controllers;
 
-use app\interfaces\UserRepositoryInterface;
-use app\library\Auth;
-use app\library\NewsLetter;
-use core\Application;
-use DI\Attribute\Inject;
+use app\repositories\UserRepository;
 
 class HomeController
 {
     public function __construct(
-        private UserRepositoryInterface $userRepository
+        private UserRepository $userRepository
     ) {}
 
 
-    #[Inject(['teste' => 'key'])]
-    public function index(
-        NewsLetter $newsLetter,
-        $teste
-    ) {
-        dd(
-            $this->userRepository->find(1),
-            $newsLetter->send(),
-            $teste
-        );
+    public function index()
+    {
+        var_dump('Controller -> HomeController -> Method -> index ');
+        $this->userRepository->find(1);
     }
 }

@@ -7,9 +7,11 @@ use core\Application;
 
 class Auth
 {
-    public function auth(
-        UserRepositoryInterface $userRepository
-    ) {
-        dd($userRepository->find(12323));
+    public function __construct(
+        private NewsLetter $newsLetter
+    ) {}
+    public function auth()
+    {
+        var_dump($this->newsLetter->send());
     }
 }

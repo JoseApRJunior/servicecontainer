@@ -3,7 +3,6 @@
 namespace core;
 
 use DI\Container;
-use ReflectionMethod;
 
 class Router
 {
@@ -32,7 +31,7 @@ class Router
                 $controller,
                 $this->method
             )) {
-                return $controller->{$this->method}();
+                return $this->container->call([$controller, $this->method]);
             }
         }
     }
